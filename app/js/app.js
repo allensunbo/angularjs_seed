@@ -1,15 +1,33 @@
 var app = angular.module('myApp', [])
-app.controller('myController', function($scope, $q) {
-    $scope.message = 'angular test!';
-    var defer = $q.defer();
-    var promise = defer.promise;
-    promise.then(function success(data) {
-        console.log(data);
-    }, function() {
 
-    });
-    $scope.doClick = function() {
-        console.info('click');
-        defer.resolve('resolved');
-    }
+app.controller('myController', function($scope, $q, $log, UserService) {
+	$scope.message = 'angular test!';
+	UserService.then(
+		function(data) {
+			$log.info(data);
+			$scope.users = data;
+		},
+		function(reason) {
+			$log.error(reason);
+		}
+	);
+});
+
+app.service('UserService', function($q, $timeout) {
+	var defer = $q.defer();
+	$timeout(function() {
+		users = [];
+		users.push({
+			'name': 'john'
+		});
+		users.push({
+			'name': 'smith'
+		});
+		users.push({
+			'name': 'allen'
+		});
+		defer.resolve(users);
+		// defer.reject('error retrieving user info');
+	}, 2000);
+	return defer.promise;
 });

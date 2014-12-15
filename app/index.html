@@ -2,8 +2,12 @@
 <html>
 <body ng-app="myApp">
     <div ng-controller="myController">
-        <h1>{{message}}</h1>
-        <button ng-click="doClick()">submit</button>
+        <h1>User List</h1>
+        <ul>
+        	<li ng-repeat="u in users">
+        		{{u.name}}
+        	</li>
+        </ul>
     </div>
   
   <script src="lib/angular.js"></script>
