@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <script src="lib/angular.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
 <body ng-app="myApp">
-    <div ng-controller="myController">
+    <div ng-controller="myController" ng-cloak>
         <h1>User List</h1>
         <ul>
-        	<li ng-repeat="u in users">
-        		{{u.name}}
-        	</li>
+            <li ng-repeat="u in users">
+                {{u.name}}
+            </li>
         </ul>
+        <div ng-bind-html="movies"> <div>
     </div>
-  
-  <script src="lib/angular.js"></script>
-  <script src="js/app.js"></script>
-
 </body>
+
 </html>
