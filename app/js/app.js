@@ -12,7 +12,7 @@ app.controller('myController', function($scope, $q, $log, UserService, $http, $s
         }
     );
 
-    $http.get('http://localhost:8080/hello')
+    $http.get('http://localhost:8080/movies')
         .success(function(data, status, headers, config) {
             $scope.movies =  $sce.trustAsHtml(data);
         });
